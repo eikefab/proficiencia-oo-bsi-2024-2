@@ -1,5 +1,6 @@
 package br.edu.ifal.eikefab.account;
 
+import br.edu.ifal.eikefab.account.impl.CheckingAccount;
 import br.edu.ifal.eikefab.account.impl.SavingsAccount;
 import br.edu.ifal.eikefab.transaction.Transaction;
 
@@ -46,6 +47,10 @@ public final class AccountBuilder {
 
     public SavingsAccount savings() {
         return new SavingsAccount(uniqueId, name, email, transactions, balance);
+    }
+
+    public CheckingAccount checking() {
+        return new CheckingAccount(uniqueId, name, email, transactions, balance);
     }
 
 }
