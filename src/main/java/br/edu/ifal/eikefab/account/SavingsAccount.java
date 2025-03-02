@@ -1,6 +1,5 @@
-package br.edu.ifal.eikefab.account.impl;
+package br.edu.ifal.eikefab.account;
 
-import br.edu.ifal.eikefab.account.Account;
 import br.edu.ifal.eikefab.account.exception.AccountInvalidMonthException;
 import br.edu.ifal.eikefab.transaction.Transaction;
 
@@ -15,7 +14,7 @@ public class SavingsAccount extends Account {
         super(uniqueId, name, email, transactions, balance);
     }
 
-    public double calculateSavingsAfter(int months) {
+    public double balanceAfter(int months) {
         if (months <= 0) {
             throw new AccountInvalidMonthException();
         }
@@ -24,6 +23,11 @@ public class SavingsAccount extends Account {
         final double balance = getBalance();
 
         return balance * rate;
+    }
+
+    @Override
+    public AccountType getAccountType() {
+        return AccountType.SAVINGS;
     }
 
 }

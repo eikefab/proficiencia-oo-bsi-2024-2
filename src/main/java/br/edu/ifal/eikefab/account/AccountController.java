@@ -4,26 +4,23 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
 
-public class AccountController {
+public final class AccountController {
 
-    private final AccountRepository repository;
+    private static final AccountController INSTANCE = new AccountController();
+    private static final AccountRepositoryImpl REPOSITORY = AccountRepositoryImpl.getInstance();
 
-    public AccountController(AccountRepository repository) {
-        this.repository = repository;
-
-        repository.connect();
-    }
+    private AccountController() {}
 
     public Set<Account> getAccounts() {
-        return repository.findAllAccounts();
+        return REPOSITORY.findAllAccounts();
     }
 
     public Set<Account> getAccountsByName(String name) {
-        return repository.findAllAccountsByName(name);
+        return REPOSITORY.findAllAccountsByName(name);
     }
 
     public Optional<Account> getAccountByUniqueId(UUID uniqueId) {
-        return repository.findAccountByUniqueId(uniqueId);
+        return REPOSITORY.findAccountByUniqueId(uniqueId);
     }
 
     public void transaction(Account from, Account to, double balance) {
@@ -31,11 +28,19 @@ public class AccountController {
     }
 
     public void create(Account account) {
-        repository.createAccount(account);
+        REPOSITORY.createAccount(account);
     }
 
     public void stop() {
-        repository.disconnect();
+        try {
+            REPOSITORY.disconnect();
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+    }
+
+    public static AccountController getInstance() {
+        return INSTANCE;
     }
 
 }

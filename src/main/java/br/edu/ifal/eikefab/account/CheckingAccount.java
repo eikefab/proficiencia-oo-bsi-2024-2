@@ -1,6 +1,5 @@
-package br.edu.ifal.eikefab.account.impl;
+package br.edu.ifal.eikefab.account;
 
-import br.edu.ifal.eikefab.account.Account;
 import br.edu.ifal.eikefab.account.exception.AccountInvalidMonthException;
 import br.edu.ifal.eikefab.transaction.Transaction;
 
@@ -21,6 +20,11 @@ public class CheckingAccount extends Account {
         }
 
         return months * CHECKING_ACCOUNT_MONTH_MAINTENANCE_PRICE;
+    }
+
+    @Override
+    public AccountType getAccountType() {
+        return AccountType.CHECKING;
     }
 
 }

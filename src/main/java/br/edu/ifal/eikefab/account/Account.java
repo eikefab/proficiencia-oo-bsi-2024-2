@@ -91,6 +91,8 @@ public abstract class Account {
         this.transactions.add(transaction);
     }
 
+    public abstract AccountType getAccountType();
+
     public static AccountBuilder builder() {
         return new AccountBuilder();
     }

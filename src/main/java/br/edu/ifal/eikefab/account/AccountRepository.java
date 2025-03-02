@@ -1,13 +1,16 @@
 package br.edu.ifal.eikefab.account;
 
+import java.sql.SQLException;
 import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
 
-public interface AccountRepository {
+interface AccountRepository {
 
-    void connect();
-    void disconnect();
+    void connect() throws ClassNotFoundException, SQLException;
+    void disconnect() throws SQLException;
+    void init();
+    boolean isConnected();
 
     Set<Account> findAllAccounts();
     Set<Account> findAllAccountsByName(String name);
