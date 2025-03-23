@@ -1,4 +1,6 @@
-package br.edu.ifal.eikefab.account;
+package br.edu.ifal.eikefab.account.repository;
+
+import br.edu.ifal.eikefab.account.Account;
 
 import java.sql.SQLException;
 import java.util.Optional;
@@ -20,9 +22,5 @@ interface AccountRepository {
     void updateAccount(Account account);
 
     void deleteAccount(UUID uniqueId);
-
-    default void deleteAccount(Account account) {
-        deleteAccount(account.getUniqueId());
-    }
 
 }

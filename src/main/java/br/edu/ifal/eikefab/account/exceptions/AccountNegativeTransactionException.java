@@ -1,4 +1,4 @@
-package br.edu.ifal.eikefab.account.exception;
+package br.edu.ifal.eikefab.account.exceptions;
 
 public class AccountNegativeTransactionException extends RuntimeException {
 

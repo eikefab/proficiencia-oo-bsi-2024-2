@@ -2,6 +2,7 @@ package br.edu.ifal.eikefab.transaction;
 
 import br.edu.ifal.eikefab.account.Account;
 
+import java.util.Objects;
 import java.util.UUID;
 
 public class Transaction {
@@ -10,15 +11,15 @@ public class Transaction {
     private final Account from;
     private final Account to;
     private final long millis;
-    private final boolean success;
+    private final boolean valid;
     private final double value;
 
-    protected Transaction(UUID uniqueId, Account from, Account to, long millis, boolean success, double value) {
-        this.uniqueId = uniqueId;
-        this.from = from;
-        this.to = to;
+    public Transaction(UUID uniqueId, Account from, Account to, long millis, boolean valid, double value) {
+        this.uniqueId = Objects.requireNonNull(uniqueId);
+        this.from = Objects.requireNonNull(from);
+        this.to = Objects.requireNonNull(to);
         this.millis = millis;
-        this.success = success;
+        this.valid = valid;
         this.value = value;
     }
 
@@ -38,8 +39,8 @@ public class Transaction {
         return millis;
     }
 
-    public boolean isSuccess() {
-        return success;
+    public boolean isValid() {
+        return valid;
     }
 
     public double getValue() {

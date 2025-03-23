@@ -1,4 +1,8 @@
-package br.edu.ifal.eikefab.account;
+package br.edu.ifal.eikefab.account.repository;
+
+import br.edu.ifal.eikefab.account.Account;
+import br.edu.ifal.eikefab.account.AccountBuilder;
+import br.edu.ifal.eikefab.account.AccountType;
 
 import java.sql.*;
 import java.util.*;

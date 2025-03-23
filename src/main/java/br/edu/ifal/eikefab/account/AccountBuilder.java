@@ -1,5 +1,7 @@
 package br.edu.ifal.eikefab.account;
 
+import br.edu.ifal.eikefab.account.impl.CheckingAccount;
+import br.edu.ifal.eikefab.account.impl.SavingsAccount;
 import br.edu.ifal.eikefab.transaction.Transaction;
 
 import java.util.List;

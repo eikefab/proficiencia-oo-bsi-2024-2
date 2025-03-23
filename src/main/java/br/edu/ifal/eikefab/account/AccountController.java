@@ -1,5 +1,7 @@
 package br.edu.ifal.eikefab.account;
 
+import br.edu.ifal.eikefab.account.repository.AccountRepositoryImpl;
+
 import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
@@ -23,10 +25,6 @@ public final class AccountController {
         return REPOSITORY.findAccountByUniqueId(uniqueId);
     }
 
-    public void transaction(Account from, Account to, double balance) {
-        // TODO: impl transaction controller
-    }
-
     public void create(Account account) {
         REPOSITORY.createAccount(account);
     }
@@ -37,6 +35,10 @@ public final class AccountController {
         } catch (Exception exception) {
             exception.printStackTrace();
         }
+    }
+
+    public boolean isConnected() {
+        return REPOSITORY.isConnected();
     }
 
     public static AccountController getInstance() {

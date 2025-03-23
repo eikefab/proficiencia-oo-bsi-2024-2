@@ -1,6 +1,8 @@
-package br.edu.ifal.eikefab.account;
+package br.edu.ifal.eikefab.account.impl;
 
-import br.edu.ifal.eikefab.account.exception.AccountInvalidMonthException;
+import br.edu.ifal.eikefab.account.Account;
+import br.edu.ifal.eikefab.account.AccountType;
+import br.edu.ifal.eikefab.account.exceptions.AccountInvalidMonthException;
 import br.edu.ifal.eikefab.transaction.Transaction;
 
 import java.util.List;
