@@ -30,7 +30,6 @@ public class AccountRepositoryImplTest {
                 .balance(100)
                 .email("eike@email.com")
                 .name("Eike")
-                .transactions(new ArrayList<>())
                 .savings();
 
         REPOSITORY.createAccount(account);
@@ -46,7 +45,6 @@ public class AccountRepositoryImplTest {
         Assertions.assertEquals(RANDOM_UNIQUE_ID, item.getUniqueId());
         Assertions.assertEquals(100, item.getBalance());
         Assertions.assertEquals("eike@email.com", item.getEmail());
-        Assertions.assertEquals(0, item.getTransactions().size());
         Assertions.assertEquals(AccountType.SAVINGS, item.getAccountType());
 
         Assertions.assertFalse(allAccounts.isEmpty());

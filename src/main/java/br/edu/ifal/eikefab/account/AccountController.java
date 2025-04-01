@@ -29,14 +29,6 @@ public final class AccountController {
         REPOSITORY.createAccount(account);
     }
 
-    public void stop() {
-        try {
-            REPOSITORY.disconnect();
-        } catch (Exception exception) {
-            exception.printStackTrace();
-        }
-    }
-
     public boolean isConnected() {
         return REPOSITORY.isConnected();
     }

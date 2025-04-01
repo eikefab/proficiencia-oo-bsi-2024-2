@@ -2,9 +2,7 @@ package br.edu.ifal.eikefab.account;
 
 import br.edu.ifal.eikefab.account.impl.CheckingAccount;
 import br.edu.ifal.eikefab.account.impl.SavingsAccount;
-import br.edu.ifal.eikefab.transaction.Transaction;
 
-import java.util.List;
 import java.util.UUID;
 
 public final class AccountBuilder {
@@ -13,7 +11,6 @@ public final class AccountBuilder {
     private String name;
     private String email;
     private double balance;
-    private List<Transaction> transactions;
 
     public AccountBuilder uniqueId(UUID uniqueId) {
         this.uniqueId = uniqueId;
@@ -39,18 +36,12 @@ public final class AccountBuilder {
         return this;
     }
 
-    public AccountBuilder transactions(List<Transaction> transactions) {
-        this.transactions = transactions;
-
-        return this;
-    }
-
     public SavingsAccount savings() {
-        return new SavingsAccount(uniqueId, name, email, transactions, balance);
+        return new SavingsAccount(uniqueId, name, email, balance);
     }
 
     public CheckingAccount checking() {
-        return new CheckingAccount(uniqueId, name, email, transactions, balance);
+        return new CheckingAccount(uniqueId, name, email, balance);
     }
 
 }

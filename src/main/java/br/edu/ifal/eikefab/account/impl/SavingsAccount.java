@@ -3,17 +3,14 @@ package br.edu.ifal.eikefab.account.impl;
 import br.edu.ifal.eikefab.account.Account;
 import br.edu.ifal.eikefab.account.AccountType;
 import br.edu.ifal.eikefab.account.exceptions.AccountInvalidMonthException;
-import br.edu.ifal.eikefab.transaction.Transaction;
-
-import java.util.List;
 import java.util.UUID;
 
 public class SavingsAccount extends Account {
 
     public static final double MONTH_GOV_INTEREST_RATE = 1.25;
 
-    public SavingsAccount(UUID uniqueId, String name, String email, List<Transaction> transactions, double balance) {
-        super(uniqueId, name, email, transactions, balance);
+    public SavingsAccount(UUID uniqueId, String name, String email, double balance) {
+        super(uniqueId, name, email, balance);
     }
 
     public double balanceAfter(int months) {

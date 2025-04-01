@@ -2,11 +2,8 @@ package br.edu.ifal.eikefab.account;
 
 import br.edu.ifal.eikefab.account.exceptions.AccountBalanceException;
 import br.edu.ifal.eikefab.account.exceptions.AccountNegativeTransactionException;
-import br.edu.ifal.eikefab.transaction.Transaction;
 
 import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -17,14 +14,12 @@ public abstract class Account {
     private final UUID uniqueId;
     private final String name;
     private final String email;
-    private final List<Transaction> transactions;
     private double balance;
 
-    protected Account(UUID uniqueId, String name, String email, List<Transaction> transactions, double balance) {
+    protected Account(UUID uniqueId, String name, String email, double balance) {
         this.uniqueId = Objects.requireNonNull(uniqueId);
         this.name = Objects.requireNonNull(name);
         this.email = Objects.requireNonNull(email);
-        this.transactions = Objects.requireNonNull(transactions);
         this.balance = balance;
     }
 
@@ -48,10 +43,6 @@ public abstract class Account {
         return DECIMAL_FORMAT.format(balance);
     }
 
-    public List<Transaction> getTransactions() {
-        return new ArrayList<>(transactions); // Retorna cópia da lista de transações
-    }
-
     public void deposit(double balance) {
         if (balance < 0) {
             throw new AccountNegativeTransactionException();
@@ -72,12 +63,6 @@ public abstract class Account {
         }
 
         this.balance = nextBalance;
-    }
-
-    protected void addTransaction(Transaction transaction) {
-        Objects.requireNonNull(transaction);
-
-        this.transactions.add(transaction);
     }
 
     public abstract AccountType getAccountType();

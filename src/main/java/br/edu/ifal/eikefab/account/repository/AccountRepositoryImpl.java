@@ -78,10 +78,7 @@ public class AccountRepositoryImpl implements AccountRepository {
                             .uniqueId(UUID.fromString(resultSet.getString("unique_id")))
                             .name(resultSet.getString("name"))
                             .email(resultSet.getString("email"))
-                            .balance(resultSet.getDouble("balance"))
-                            .transactions(new ArrayList<>());
-
-                    // TODO: impl transactions
+                            .balance(resultSet.getDouble("balance"));
 
                     final Account account;
 
@@ -115,10 +112,7 @@ public class AccountRepositoryImpl implements AccountRepository {
                             .uniqueId(UUID.fromString(resultSet.getString("unique_id")))
                             .name(resultSet.getString("name"))
                             .email(resultSet.getString("email"))
-                            .balance(resultSet.getDouble("balance"))
-                            .transactions(new ArrayList<>());
-
-                    // TODO: impl transactions
+                            .balance(resultSet.getDouble("balance"));
 
                     final Account account;
 
@@ -151,10 +145,7 @@ public class AccountRepositoryImpl implements AccountRepository {
                             .uniqueId(UUID.fromString(resultSet.getString("unique_id")))
                             .name(resultSet.getString("name"))
                             .email(resultSet.getString("email"))
-                            .balance(resultSet.getDouble("balance"))
-                            .transactions(new ArrayList<>());
-
-                    // TODO: implement transactions!!!
+                            .balance(resultSet.getDouble("balance"));
 
                     final Account account;
 

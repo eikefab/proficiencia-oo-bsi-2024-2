@@ -4,7 +4,6 @@ import br.edu.ifal.eikefab.account.Account;
 import br.edu.ifal.eikefab.account.AccountController;
 import br.edu.ifal.eikefab.account.AccountType;
 import br.edu.ifal.eikefab.account.impl.CheckingAccount;
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -29,7 +28,6 @@ public class AccountControllerTest {
                 .balance(15)
                 .email("eike@email.com")
                 .name("Eike")
-                .transactions(new ArrayList<>())
                 .checking();
 
         Assertions.assertDoesNotThrow(() -> CONTROLLER.create(account));
