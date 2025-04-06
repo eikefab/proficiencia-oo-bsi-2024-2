@@ -11,8 +11,6 @@ public class DeleteAccountOption extends MenuOption {
         super("Excluir conta pelo ID", (scanner) -> {
             final AccountController controller = AccountController.getInstance();
 
-            System.out.println("Identificador da conta >");
-
             final String id = scanner.next();
             final UUID uniqueId = UUID.fromString(id);
 

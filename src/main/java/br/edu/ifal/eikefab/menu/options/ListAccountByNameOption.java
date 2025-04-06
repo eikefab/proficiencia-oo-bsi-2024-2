@@ -3,6 +3,7 @@ package br.edu.ifal.eikefab.menu.options;
 import br.edu.ifal.eikefab.account.Account;
 import br.edu.ifal.eikefab.account.AccountController;
 import br.edu.ifal.eikefab.menu.MenuOption;
+import br.edu.ifal.eikefab.menu.options.exception.NoAccountsException;
 
 import java.util.Set;
 
@@ -17,9 +18,7 @@ public class ListAccountByNameOption extends MenuOption {
             final Set<Account> matchAccounts = AccountController.getInstance().getAccountsByName(queryName);
 
             if (matchAccounts.isEmpty()) {
-                System.out.format("Nenhum resultado encontrado para %s", queryName);
-
-                return;
+                throw new NoAccountsException();
             }
 
             System.out.format("%d resultados encontrados para %s", matchAccounts.size(), queryName).println();

@@ -44,9 +44,10 @@ public class AccountControllerTest {
         Assertions.assertTrue(matcher.apply(accounts));
         Assertions.assertTrue(matcher.apply(accountsByName));
 
-        final Optional<Account> queryAccount = CONTROLLER.getAccountByUniqueId(account.getUniqueId());
+        Optional<Account> queryAccount = CONTROLLER.getAccountByUniqueId(account.getUniqueId());
 
         Assertions.assertTrue(queryAccount.isPresent());
+        Assertions.assertTrue(CONTROLLER.exists(account.getUniqueId()));
 
         final Account queryItem = queryAccount.get();
 
@@ -54,6 +55,18 @@ public class AccountControllerTest {
         Assertions.assertEquals(account.getEmail(), queryItem.getEmail());
         Assertions.assertEquals(account.getBalance(), queryItem.getBalance());
         Assertions.assertEquals(AccountType.CHECKING, queryItem.getAccountType());
+
+        account.deposit(100);
+
+        CONTROLLER.update(account);
+
+        queryAccount = CONTROLLER.getAccountByUniqueId(account.getUniqueId());
+
+        Assertions.assertTrue(queryAccount.isPresent());
+        Assertions.assertEquals(115, queryAccount.get().getBalance());
+
+        CONTROLLER.deleteByUniqueId(account.getUniqueId());
+        Assertions.assertFalse(CONTROLLER.exists(account.getUniqueId()));
     }
 
 }

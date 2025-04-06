@@ -3,6 +3,7 @@ package br.edu.ifal.eikefab.menu.options;
 import br.edu.ifal.eikefab.account.Account;
 import br.edu.ifal.eikefab.account.AccountController;
 import br.edu.ifal.eikefab.menu.MenuOption;
+import br.edu.ifal.eikefab.menu.options.exception.NoAccountsException;
 
 import java.util.Set;
 
@@ -15,9 +16,7 @@ public class ListAccountOption extends MenuOption {
                     Set<Account> accounts = AccountController.getInstance().getAccounts();
 
                     if (accounts.isEmpty()) {
-                        System.out.println("Não há contas cadastradas no sistema.");
-
-                        return;
+                        throw new NoAccountsException();
                     }
 
                     System.out.format("Existem %d contas cadastradas no sistema...\n", accounts.size()).println();

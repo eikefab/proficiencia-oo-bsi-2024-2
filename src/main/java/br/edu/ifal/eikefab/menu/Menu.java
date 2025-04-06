@@ -53,7 +53,11 @@ public final class Menu {
 
                 System.out.println();
 
-                option.getHandler().onSelect(scanner);
+                try {
+                    option.getHandler().onSelect(scanner);
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
 
                 System.out.println();
 
