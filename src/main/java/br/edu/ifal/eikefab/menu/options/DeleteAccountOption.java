@@ -1,15 +1,14 @@
 package br.edu.ifal.eikefab.menu.options;
 
-import br.edu.ifal.eikefab.account.Account;
 import br.edu.ifal.eikefab.account.AccountController;
 import br.edu.ifal.eikefab.menu.MenuOption;
 
 import java.util.UUID;
 
-public class CheckBalanceOption extends MenuOption {
+public class DeleteAccountOption extends MenuOption {
 
-    public CheckBalanceOption() {
-        super("Verificar saldo da conta", (scanner) -> {
+    public DeleteAccountOption() {
+        super("Excluir conta pelo ID", (scanner) -> {
             final AccountController controller = AccountController.getInstance();
 
             System.out.println("Identificador da conta >");
@@ -23,10 +22,9 @@ public class CheckBalanceOption extends MenuOption {
                 return;
             }
 
-            final Account account = controller.getAccountByUniqueId(uniqueId).get();
+            controller.deleteByUniqueId(uniqueId);
 
-            System.out.format("%s possui R$ %s", account.getName(), account.getLocaleBalance()).println();
+            System.out.println("Conta excluída.");
         });
     }
-
 }

@@ -1,7 +1,6 @@
 package br.edu.ifal.eikefab.menu;
 
-import br.edu.ifal.eikefab.menu.options.CheckBalanceOption;
-import br.edu.ifal.eikefab.menu.options.ListAccountOption;
+import br.edu.ifal.eikefab.menu.options.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,19 +12,22 @@ public final class Menu {
     private static final List<MenuOption> OPTIONS = new ArrayList<>(
             Arrays.asList(
                     new ListAccountOption(),
-                    // CREATE ACCOUNT OPTION
-                    // DELETE ACCOUNT OPTION
-                    // WITHDRAW ACCOUNT OPTION
-                    // DEPOSIT ACCOUNT OPTION
-                    // CALCULATE SAVINGS OPTION
-                    // CALCULATE CHECKING PRICE OPTION
-                    new CheckBalanceOption()
+                    new ListAccountByNameOption(),
+                    new CreateAccountOption(),
+                    new DeleteAccountOption(),
+                    new CheckBalanceOption(),
+                    new WithdrawAccountOption(),
+                    new DepositAccountOption(),
+                    new CalculateSavingsOption(),
+                    new CalculateCheckingPriceOption()
             )
     );
 
     public static void printOptions() {
-        for (MenuOption option : OPTIONS) {
-            System.out.format("%d\t%s", option.getNumber(), option.getText()).println();
+        for (int index = 0; index < OPTIONS.size(); index++) {
+            final MenuOption option = OPTIONS.get(index);
+
+            System.out.format("%d - %s", (index + 1), option.getText()).println();
         }
 
         System.out.format("\nOpção (1-%d) > ", OPTIONS.size()).println();

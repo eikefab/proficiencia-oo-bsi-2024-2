@@ -10,7 +10,6 @@ public class ListAccountOption extends MenuOption {
 
     public ListAccountOption() {
         super(
-                1,
                 "Visualizar contas",
                 (_) -> {
                     Set<Account> accounts = AccountController.getInstance().getAccounts();

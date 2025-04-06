@@ -6,10 +6,10 @@ import br.edu.ifal.eikefab.menu.MenuOption;
 
 import java.util.UUID;
 
-public class CheckBalanceOption extends MenuOption {
+public class DepositAccountOption extends MenuOption {
 
-    public CheckBalanceOption() {
-        super("Verificar saldo da conta", (scanner) -> {
+    public DepositAccountOption() {
+        super("Realizar depósito", (scanner) -> {
             final AccountController controller = AccountController.getInstance();
 
             System.out.println("Identificador da conta >");
@@ -25,7 +25,19 @@ public class CheckBalanceOption extends MenuOption {
 
             final Account account = controller.getAccountByUniqueId(uniqueId).get();
 
-            System.out.format("%s possui R$ %s", account.getName(), account.getLocaleBalance()).println();
+            System.out.println("Valor a ser depositado >");
+            final double value = scanner.nextDouble();
+
+            if (value <= 0) {
+                System.out.println("Valor inválido!");
+
+                return;
+            }
+
+            account.deposit(value);
+            controller.update(account);
+
+            System.out.println("Depósito realizado com sucesso.");
         });
     }
 

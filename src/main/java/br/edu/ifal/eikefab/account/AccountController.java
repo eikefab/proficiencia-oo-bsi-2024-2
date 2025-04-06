@@ -29,6 +29,18 @@ public final class AccountController {
         REPOSITORY.createAccount(account);
     }
 
+    public boolean exists(UUID id) {
+        return REPOSITORY.findAccountByUniqueId(id).isPresent();
+    }
+
+    public void update(Account account) {
+        REPOSITORY.updateAccount(account);
+    }
+
+    public void deleteByUniqueId(UUID id) {
+        REPOSITORY.deleteAccount(id);
+    }
+
     public boolean isConnected() {
         return REPOSITORY.isConnected();
     }

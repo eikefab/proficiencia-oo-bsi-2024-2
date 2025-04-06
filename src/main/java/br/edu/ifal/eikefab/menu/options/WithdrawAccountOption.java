@@ -6,10 +6,9 @@ import br.edu.ifal.eikefab.menu.MenuOption;
 
 import java.util.UUID;
 
-public class CheckBalanceOption extends MenuOption {
-
-    public CheckBalanceOption() {
-        super("Verificar saldo da conta", (scanner) -> {
+public class WithdrawAccountOption extends MenuOption {
+    public WithdrawAccountOption() {
+        super("Realizar saque", (scanner) -> {
             final AccountController controller = AccountController.getInstance();
 
             System.out.println("Identificador da conta >");
@@ -25,8 +24,19 @@ public class CheckBalanceOption extends MenuOption {
 
             final Account account = controller.getAccountByUniqueId(uniqueId).get();
 
-            System.out.format("%s possui R$ %s", account.getName(), account.getLocaleBalance()).println();
+            System.out.format("Valor a ser sacado (Disponível: R$ %s) >", account.getLocaleBalance()).println();
+            final double value = scanner.nextDouble();
+
+            if (value <= 0 || value > account.getBalance()) {
+                System.out.println("Valor inválido!");
+
+                return;
+            }
+
+            account.withdraw(value);
+            controller.update(account);
+
+            System.out.println("Saque realizado com sucesso.");
         });
     }
-
 }
