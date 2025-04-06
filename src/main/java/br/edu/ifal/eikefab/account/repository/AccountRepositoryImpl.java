@@ -101,10 +101,10 @@ public class AccountRepositoryImpl implements AccountRepository {
     @Override
     public Set<Account> findAllAccountsByName(String name) {
         final Set<Account> accounts = new HashSet<>();
-        final String query = "select `unique_id`, `name`, `email`, `balance`, `savings` from `accounts` where `name` = ?;";
+        final String query = "select `unique_id`, `name`, `email`, `balance`, `savings` from `accounts` where lower(`name`) like concat('%', ?, '%');";
 
         try (PreparedStatement statement = connection.prepareStatement(query)) {
-            statement.setString(1, name);
+            statement.setString(1, name.toLowerCase());
 
             try (ResultSet resultSet = statement.executeQuery()) {
                 while (resultSet.next()) {
