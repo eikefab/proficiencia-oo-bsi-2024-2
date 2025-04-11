@@ -37,26 +37,6 @@ No projeto, utilizei de classe abstrata `Account`, com suas respectivas implemen
 
 Uso de `interface` e `enum` pode ser observado em `br.edu.ifal.eikefab.account.repository.AccountRepository` e `br.edu.ifal.eikefab.account.AccountType`, respectivamente.
 
-Como padrão de projeto, implementei o MVC, onde temos como
-
-`Model`
-
-- Account
-  - Implementado utilizando design pattern o conceito de Builder.
-    - Utilizado em momentos em que há muitos parâmetros no construtor, como uma maneira de enxugá-los.
-- SavingsAccount
-- CheckingAccount
-
-`View`
-
-- Menu
-- MenuHandler
-- MenuOption
-
-`Controller`
-
-- AccountController
-  - Utiliza como design pattern o conceito de Singleton;
-  - Conectado ao banco via `AccountRepository`.
+Como padrão de projeto, implementei Singleton e Builder.
 
 Temos exceções específicas para cada acesso e, ao todo, 46 testes, espalhados por todo o código obtendo 88% de coverage.
